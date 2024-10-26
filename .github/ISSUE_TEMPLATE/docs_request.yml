@@ -1,0 +1,43 @@
+name: "📄 문서 요청"
+description: "프로젝트의 문서를 개선하거나 새로운 문서 작성을 요청할 때 사용합니다."
+title: "[문서 요청]"
+labels: ["documentation", "triage"]
+assignees:
+  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        감사합니다! 문서 요청 작성을 도와주셔서 감사합니다. 아래 양식을 작성해 주세요.
+  - type: input
+    id: documentation
+    attributes:
+      label: 요청하는 문서
+      description: 추가되었으면 하는 문서의 제목이나 주제를 간략히 설명해 주세요.
+      placeholder: 예) 설치 가이드, API 사용법
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 문서 상세 설명
+      description: 요청하는 문서에 대한 상세한 설명을 작성해 주세요.
+      placeholder: 예) 사용자들이 쉽게 이해할 수 있도록 단계별 설치 과정을 상세히 설명해 주세요.
+    validations:
+      required: true
+  - type: textarea
+    id: benefits
+    attributes:
+      label: 기대 효과
+      description: 이 문서가 추가되었을 때의 기대 효과를 설명해 주세요.
+      placeholder: 예) 신규 사용자들의 초기 설정 시간을 단축할 수 있습니다.
+    validations:
+      required: false
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: 추가 정보 (선택 사항)
+      description: 문서 요청과 관련된 추가 정보를 제공해 주세요.
+      placeholder: 예) 다른 프로젝트에서 유사한 문서가 잘 작성되어 있습니다.
+    validations:
+      required: false

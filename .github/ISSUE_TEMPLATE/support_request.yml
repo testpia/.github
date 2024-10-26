@@ -1,0 +1,52 @@
+# admin/.github/ISSUE_TEMPLATE/support_request.yml
+name: "🆘 지원 요청"
+description: "프로젝트 사용 중 발생한 문제나 도움이 필요할 때 사용합니다."
+title: "[지원 요청]"
+labels: ["support", "triage"]
+assignees:
+  - support-team
+body:
+  - type: markdown
+    attributes:
+      value: |
+        감사합니다! 지원 요청 작성을 도와주셔서 감사합니다. 아래 양식을 작성해 주세요.
+  - type: input
+    id: issue_title
+    attributes:
+      label: 문제 제목
+      description: 겪고 있는 문제의 제목을 간략히 작성해 주세요.
+      placeholder: 예) 로그인 시 오류 발생
+    validations:
+      required: true
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: 문제 설명
+      description: 겪고 있는 문제에 대해 상세히 설명해 주세요.
+      placeholder: 예) 로그인 버튼을 클릭하면 "오류" 메시지가 표시됩니다.
+    validations:
+      required: true
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: 재현 단계
+      description: 문제를 재현할 수 있는 단계들을 순서대로 적어 주세요.
+      placeholder: 1. 로그인 페이지 접속 2. 사용자 정보 입력 3. 로그인 버튼 클릭
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 환경 정보
+      description: 사용 중인 운영체제, 브라우저 버전 등 환경 정보를 제공해 주세요.
+      placeholder: 예) Windows 10, Chrome 112
+    validations:
+      required: false
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: 추가 정보 (선택 사항)
+      description: 문제 해결에 도움이 될 만한 추가 정보를 제공해 주세요.
+      placeholder: 예) 콘솔에 나타나는 오류 메시지
+    validations:
+      required: false
