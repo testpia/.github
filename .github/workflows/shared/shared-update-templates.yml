@@ -1,0 +1,32 @@
+name: Shared Trigger Template Update
+
+on:
+  repository_dispatch:
+    types:
+      - update-templates-event
+
+jobs:
+  handle-update-templates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Current Repository
+        uses: actions/checkout@v4
+
+      - name: Checkout Central Repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.CENTRAL_REPO }}
+          path: central
+
+      - name: Copy Templates
+        run: |
+          cp -R central/.github/ISSUE_TEMPLATE .github/ISSUE_TEMPLATE
+          cp -R central/.github/PULL_REQUEST_TEMPLATE .github/PULL_REQUEST_TEMPLATE
+
+      - name: Commit and Push Changes
+        uses: ./.github/actions/bot-commit
+        with:
+          commit_message: "chore: Update ISSUE and PULL_REQUEST templates"
+          files: ".github/ISSUE_TEMPLATE .github/PULL_REQUEST_TEMPLATE"
+          target_branch: main

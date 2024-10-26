@@ -1,0 +1,47 @@
+name: Trigger Sub-Repositories Template Update
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  UPDATE_TEMPLATES_EVENT: update-templates-event
+  SUB_REPOS: |
+    testpia/repo1
+    testpia/repo2
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      sub_repos: ${{ steps.set_sub_repos.outputs.sub_repos }}
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Github CLI
+        uses: cli/cli@v2
+        with:
+          version: latest
+
+      - name: Authenticate Github CLI
+        run: echo "${{ env.GITHUB_TOKEN }}" | gh auth login --with-token
+
+      - name: Set Sub-Repositories
+        id: set_sub_repos
+        run: |
+          echo "sub_repos=$(echo "${SUB_REPOS}" | tr '\n' ' ')" >> $GITHUB_OUTPUT
+
+  trigger-update-templates:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Sub-Repositories Template Update
+        run: |
+          for sub_repo in "${{ needs.setup.outputs.sub_repos }}"; do
+            echo "Triggering update for ${sub_repo}"
+            gh api repos/${sub_repo}/dispatches -f event_type=${UPDATE_TEMPLATES_EVENT}
+          done

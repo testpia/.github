@@ -1,0 +1,25 @@
+feature_addition:
+  # paths:
+  - "PULL_REQUEST_TEMPLATE/feature_addition.md"
+  # - enhancement
+  # - needs-review
+bug_fix:
+  #   patterns:
+  - "PULL_REQUEST_TEMPLATE/bug_fix.md"
+#   labels:
+#     - bug
+#     - needs-review
+
+documentation_update:
+  #   patterns:
+  - "PULL_REQUEST_TEMPLATE/documentation_update.md"
+#   labels:
+#     - documentation
+#     - needs-review
+
+code_refactoring:
+  #   patterns:
+  - "PULL_REQUEST_TEMPLATE/code_refactoring.md"
+#   labels:
+#     - refactor
+#     - needs-review

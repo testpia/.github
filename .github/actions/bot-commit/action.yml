@@ -1,0 +1,37 @@
+name: Commit and Push Changes by Bot
+description: Commit and push changes to a repository
+
+inputs:
+  commit_message:
+    description: Commit message
+    required: true
+  files:
+    description: files to add to the commit
+    required: true
+  target_branch:
+    description: target branch
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Git
+      shell: bash
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Add changed files
+      shell: bash
+      run: |
+        git add ${{ inputs.files }}
+
+    - name: Commit changes
+      shell: bash
+      run: |
+        git commit -m "${{ inputs.commit_message }}"
+
+    - name: Push changes
+      shell: bash
+      run: |
+        git push origin ${{ inputs.target_branch }}

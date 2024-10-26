@@ -1,0 +1,43 @@
+name: "✨ 기능 요청"
+description: "프로젝트에 추가되었으면 하는 새로운 기능을 제안해주세요."
+title: "[기능 요청]"
+labels: ["enhancement", "triage"]
+assignees:
+  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        감사합니다! 기능 요청 작성을 도와주셔서 감사합니다. 아래 양식을 작성해 주세요.
+  - type: input
+    id: feature
+    attributes:
+      label: 요청하는 기능
+      description: 추가되었으면 하는 기능을 간략히 설명해 주세요.
+      placeholder: 예) 다크 모드 지원
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 기능 상세 설명
+      description: 요청하는 기능에 대한 상세한 설명을 작성해 주세요.
+      placeholder: 예) 사용자가 밝은 테마와 어두운 테마 중 선택할 수 있도록 설정을 추가합니다.
+    validations:
+      required: true
+  - type: textarea
+    id: benefits
+    attributes:
+      label: 기대 효과
+      description: 이 기능이 추가되었을 때의 기대 효과를 설명해 주세요.
+      placeholder: 예) 사용자 경험 향상 및 접근성 개선
+    validations:
+      required: false
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: 추가 정보 (선택 사항)
+      description: 기능 요청과 관련된 추가 정보를 제공해 주세요.
+      placeholder: 예) 다른 프로젝트에서 유사한 기능이 잘 동작하고 있습니다.
+    validations:
+      required: false

@@ -1,0 +1,19 @@
+name: 자동 라벨링
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  add-labels:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Add Labels Based on PR Template
+        uses: wei/cool-labeler@v1
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          configuration-path: .github/labeler.yml

@@ -1,0 +1,52 @@
+name: "🐛 버그 리포트"
+description: "프로젝트에서 발견된 버그를 신고해주세요."
+title: "[버그]"
+labels: ["bug", "triage"]
+assignees:
+  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        감사합니다! 버그 리포트 작성을 도와주셔서 감사합니다. 아래 양식을 작성해 주세요.
+  - type: textarea
+    id: description
+    attributes:
+      label: 버그 설명
+      description: 어떤 버그인지 상세히 설명해 주세요.
+      placeholder: 예) 로그인 시 오류 발생
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 단계
+      description: 버그를 재현할 수 있는 단계들을 순서대로 적어 주세요.
+      placeholder: 1. 로그인 페이지 접속 2. 사용자 정보 입력 3. 로그인 버튼 클릭
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 결과
+      description: 정상적으로 동작했을 때의 결과를 설명해 주세요.
+      placeholder: 로그인 후 대시보드로 이동
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제 결과
+      description: 실제로 발생한 결과를 설명해 주세요.
+      placeholder: 로그인 버튼 클릭 시 오류 메시지 발생
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 환경 정보
+      description: 사용 중인 운영체제, 브라우저 버전 등 환경 정보를 제공해 주세요.
+      placeholder: 예) Windows 10, Chrome 112
+    validations:
+      required: false
+
